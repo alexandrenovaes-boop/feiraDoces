@@ -1,0 +1,777 @@
+/* geral */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #FDF3F4;
+    color: #240707;
+    font-family: "DM Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+.logo {
+    font-family: "League Spartan", sans-serif;
+}
+
+
+/* layout */
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* menu lateral */
+
+.menu-lateral {
+    width: 300px;
+    min-height: 100vh;
+    background: #FFC8C8;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 45px;
+}
+
+.logo img {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+/* navegacao */
+
+.navegacao {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.navegacao button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 18px;
+    border: none;
+    border-radius: 15px;
+    background: transparent;
+    color: #240707;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.navegacao button:hover {
+    background: #FBB1BD;
+}
+
+.navegacao button.ativo {
+    background: #FF477E;
+}
+
+.simbolo {
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.simbolo img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
+/* total lateral */
+
+.menu-lateral-baixo {
+    margin-top: auto;
+    padding: 20px;
+    background: #FBB1BD;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-lateral-baixo b {
+    font-family: "League Spartan", sans-serif;
+    font-size: 24px;
+}
+
+.menu-lateral-baixo small {
+    font-size: 13px;
+}
+
+
+/* conteudo */
+
+.conteudo {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    padding: 40px;
+    position: relative;
+}
+
+.pagina {
+    display: none;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+
+/* idioma */
+
+#botaoIdioma {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    color: #240707;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 50;
+}
+
+#botaoIdioma img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+#botaoIdioma:hover {
+    color: #FF477E;
+}
+
+
+/* banner */
+
+.banner {
+    height: 290px;
+    margin-top: 60px;
+    background: #FBB1BD;
+    border-radius: 30px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner h2 {
+    margin: 0;
+    font-size: 50px;
+    line-height: 0.95;
+    max-width: 500px;
+}
+
+.banner p {
+    margin-top: 20px;
+    font-size: 17px;
+    max-width: 500px;
+}
+
+.banner img {
+    position: absolute;
+    right: 50px;
+    bottom: -20px;
+    width: 300px;
+    max-height: 280px;
+    object-fit: contain;
+}
+
+
+/* secoes */
+
+.secao {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.secao h2 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.etiqueta {
+    background: #FF477E;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* produtos */
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.produto {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 5px 20px rgba(36, 7, 7, 0.06);
+    transition: 0.2s;
+}
+
+.produto:hover {
+    transform: translateY(-3px);
+}
+
+.imagem-produto {
+    width: 100%;
+    height: 180px;
+    background: #FBB1BD;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.imagem-produto img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+}
+
+.produto h3 {
+    margin: 15px 5px 10px;
+    font-size: 20px;
+}
+
+.linha-produto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.preco {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+/* adicionar */
+
+.adicionar {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: #FF477E;
+    color: #240707;
+    font-size: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.adicionar:hover {
+    background: #FBB1BD;
+    transform: scale(1.05);
+}
+
+
+/* voltar */
+
+.voltar {
+    border: none;
+    background: transparent;
+    color: #240707;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.voltar:hover {
+    color: #FF477E;
+}
+
+
+/* carrinho */
+
+#carrinho {
+    padding-top: 20px;
+}
+
+#carrinho .secao {
+    margin-top: 30px;
+}
+
+#carrinho .secao label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#selecionarTudo {
+    width: 17px;
+    height: 17px;
+    accent-color: #FF477E;
+    cursor: pointer;
+}
+
+
+/* grade carrinho */
+
+.grade-carrinho {
+    display: grid;
+    grid-template-columns: 1fr 330px;
+    gap: 30px;
+    margin-top: 25px;
+    align-items: start;
+}
+
+.itens-carrinho {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* item carrinho */
+
+.item-carrinho {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 5px 20px rgba(36, 7, 7, 0.05);
+}
+
+.item-carrinho > input {
+    width: 18px;
+    height: 18px;
+    accent-color: #FF477E;
+    cursor: pointer;
+}
+
+.imagem-carrinho {
+    width: 90px;
+    height: 90px;
+    background: #FBB1BD;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.imagem-carrinho img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+}
+
+.informacoes-carrinho {
+    flex: 1;
+}
+
+.informacoes-carrinho h3 {
+    margin: 0 0 5px;
+    font-size: 20px;
+}
+
+.informacoes-carrinho small {
+    font-size: 14px;
+}
+
+
+/* quantidade */
+
+.quantidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.quantidade button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    background: #FFC8C8;
+    color: #240707;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantidade button:hover {
+    background: #FF477E;
+}
+
+.quantidade span {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.total-item {
+    font-family: "League Spartan", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* resumo */
+
+.resumo {
+    background: #FFFFFF;
+    border-radius: 22px;
+    padding: 25px;
+    position: sticky;
+    top: 25px;
+    box-shadow: 0 5px 20px rgba(36, 7, 7, 0.06);
+}
+
+.resumo h2 {
+    margin-top: 0;
+    font-size: 25px;
+}
+
+.linha-resumo,
+.linha-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.linha-resumo {
+    border-bottom: 1px solid #FBB1BD;
+}
+
+.linha-total {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+/* pagar */
+
+.pagar {
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: #FF477E;
+    color: #240707;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.pagar:hover {
+    background: #FBB1BD;
+    transform: translateY(-2px);
+}
+
+
+/* carrinho vazio */
+
+.carrinho-vazio {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+/* modal pagamento */
+
+.modal-pagamento {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(36, 7, 7, 0.65);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-pagamento.aberto {
+    display: flex;
+}
+
+
+/* caixa pagamento */
+
+.caixa-pagamento {
+    position: relative;
+    width: 420px;
+    max-width: 100%;
+    background: #FDF3F4;
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(36, 7, 7, 0.3);
+}
+
+.caixa-pagamento h2 {
+    margin: 0 0 10px;
+    font-size: 30px;
+}
+
+.caixa-pagamento p {
+    margin: 0 0 15px;
+    font-size: 15px;
+}
+
+
+/* qr code */
+
+#qrcodePagamento {
+    width: 280px;
+    height: 280px;
+    max-width: 100%;
+    display: block;
+    margin: 15px auto;
+    object-fit: contain;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+
+/* fechar pagamento */
+
+.fechar-pagamento {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: #240707;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.fechar-pagamento:hover {
+    color: #FF477E;
+    background: #FFC8C8;
+}
+
+.botao-fechar-pagamento {
+    border: none;
+    background: #FF477E;
+    color: #240707;
+    border-radius: 13px;
+    padding: 12px 25px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botao-fechar-pagamento:hover {
+    background: #FBB1BD;
+}
+
+
+/* responsivo */
+
+@media (max-width: 1100px) {
+
+    .produtos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grade-carrinho {
+        grid-template-columns: 1fr 300px;
+    }
+
+}
+
+@media (max-width: 850px) {
+
+    .menu-lateral {
+        width: 220px;
+    }
+
+    .conteudo {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+        padding: 25px;
+    }
+
+    .produtos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grade-carrinho {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo {
+        position: static;
+    }
+
+    .banner h2 {
+        font-size: 40px;
+    }
+
+    .banner img {
+        width: 230px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .layout {
+        display: block;
+    }
+
+    .menu-lateral {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 15px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .logo img {
+        width: 60px !important;
+        margin-bottom: 5px;
+    }
+
+    .navegacao {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .navegacao button {
+        width: auto;
+        padding: 10px;
+    }
+
+    .navegacao .texto {
+        display: none;
+    }
+
+    .menu-lateral-baixo {
+        display: none;
+    }
+
+    .conteudo {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    #botaoIdioma {
+        top: 15px;
+        right: 20px;
+    }
+
+    .banner {
+        margin-top: 55px;
+        height: 300px;
+        padding: 25px;
+    }
+
+    .banner h2 {
+        font-size: 35px;
+    }
+
+    .banner img {
+        width: 190px;
+        right: 10px;
+        bottom: -10px;
+    }
+
+    .produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .secao {
+        gap: 15px;
+    }
+
+    .item-carrinho {
+        flex-wrap: wrap;
+    }
+
+    .total-item {
+        margin-left: auto;
+    }
+
+    .caixa-pagamento {
+        padding: 25px 20px;
+    }
+
+    #qrcodePagamento {
+        width: 240px;
+        height: 240px;
+    }
+
+}
