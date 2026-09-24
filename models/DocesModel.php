@@ -13,7 +13,7 @@ class DocesModel {
     }
 
     
-    public function buscarPratos($id) {
+    public function buscarDoces($id) {
         $sql = "SELECT * FROM doces WHERE id = ?";
         $stmt = $this->conexao->prepare($sql);
         $stmt->bind_param("i", $id);
@@ -28,8 +28,8 @@ class DocesModel {
     }
 
     
-    public function adicionarPratos($nome, $preco, $quantidade) {
-        $sql = "INSERT INTO pratos (nome, preco, quantidade) VALUES (?, ?, ?, ?)";
+    public function adicionarDoces($nome, $preco, $quantidade) {
+        $sql = "INSERT INTO Doces (nome, preco, quantidade) VALUES (?, ?, ?, ?)";
         $stmt = $this->conexao->prepare($sql);
 
         if ($stmt) {
@@ -68,4 +68,33 @@ class DocesModel {
         $stmt->close();
         return $resultado;
     }
+
+    public function baixarEstoqueLote($itens) {
+    $this->conexao->begin_transaction();
+
+    try {
+        $sql = "UPDATE doces SET quantidade = quantidade - ? WHERE nome = ? AND quantidade >= ?";
+        $stmt = $this->conexao->prepare($sql);
+
+        foreach ($itens as $item) {
+            $qtd  = (int) $item['quantidade'];
+            $nome = $item['nome'];
+
+            $stmt->bind_param('isi', $qtd, $nome, $qtd);
+            $stmt->execute();
+
+            if ($stmt->affected_rows === 0) {
+                throw new Exception("Estoque insuficiente para: $nome");
+            }
+        }
+
+        $stmt->close();
+        $this->conexao->commit();
+        return ['sucesso' => true];
+
+    } catch (Exception $e) {
+        $this->conexao->rollback();
+        return ['sucesso' => false, 'erro' => $e->getMessage()];
+    }
+}
 }

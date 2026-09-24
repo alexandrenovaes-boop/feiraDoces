@@ -126,6 +126,8 @@
         </span>
       </div>
 
+
+
       <!-- PRODUTOS -->
       <div class="produtos">
 
@@ -142,7 +144,7 @@
 
       <div class="imagem-produto">
 
-        <img src="<?=URL?>/assets/img/<?= htmlspecialchars($linha['nome']) ?>.png" alt="<?= htmlspecialchars($linha['nome']) ?>">
+        <img src="<?=URL?>/assets/img/<?= htmlspecialchars($linha['id']) ?>.png" alt="<?= htmlspecialchars($linha['nome']) ?>">
       </div>
       <h3>
         <?= htmlspecialchars($linha['nome']) ?>
@@ -1018,20 +1020,57 @@
     ========================= */
 
 
-    function fecharPagamento() {
+async function fecharPagamento() {
 
+  document
+    .getElementById('modalPagamento')
+    .classList.remove('aberto');
 
+  const idsComprados = Object.keys(carrinho)
+    .filter(id => carrinho[id] > 0 && selecionados[id]);
 
+  if (idsComprados.length === 0) {
+    return;
+  }
 
-      document
-        .getElementById(
-          'modalPagamento'
-        )
-        .classList.remove('aberto');
+  const itens = idsComprados.map(id => ({
+    nome: produtos[id].nome,
+    quantidade: carrinho[id]
+  }));
 
+  try {
+    const resposta = await fetch('index.php?action=baixarEstoque', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ itens })
+    });
 
+    const resultado = await resposta.json();
+
+    if (!resposta.ok || !resultado.sucesso) {
+      alert('Erro ao confirmar pagamento: ' + resultado.erro);
+      return;
     }
 
+    idsComprados.forEach(id => {
+      delete carrinho[id];
+      delete selecionados[id];
+    });
+
+    mostrarCarrinho();
+    atualizar();
+
+    alert('Pagamento confirmado! Obrigado pela compra 🍬');
+
+  } catch (erro) {
+    console.error('Erro ao atualizar estoque:', erro);
+    alert('Não foi possível confirmar o pagamento. Tente novamente.');
+  }
+}
+
+function fecharModalPagamento() {
+  document.getElementById('modalPagamento').style.display = 'none';
+}
 
 
 

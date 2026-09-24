@@ -25,4 +25,8 @@ class DocesController {
     public function buscar($id) {
         return $this->DocesModel->buscarDoces($id);
     }
+
+    public function baixarEstoque($itens) {
+    return $this->DocesModel->baixarEstoqueLote($itens);
+}
 }

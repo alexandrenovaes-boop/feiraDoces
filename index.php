@@ -56,6 +56,24 @@ switch ($action) {
         }
         break;
 
+        case 'baixarEstoque':
+    header('Content-Type: application/json');
+    $dados = json_decode(file_get_contents('php://input'), true);
+
+    if (!isset($dados['itens']) || !is_array($dados['itens'])) {
+        http_response_code(400);
+        echo json_encode(['erro' => 'Dados inválidos']);
+        exit();
+    }
+
+    $resultado = $controller->baixarEstoque($dados['itens']);
+
+    if (!$resultado['sucesso']) {
+        http_response_code(409);
+    }
+
+    echo json_encode($resultado);
+    exit();
   
     default:
         $doce = $controller->listar();
